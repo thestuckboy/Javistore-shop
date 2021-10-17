@@ -16,7 +16,23 @@
 </head>
 <body>
     <div class="container">
-        <header class="container__presentation">
+
+        <!-- Navigation bar -->
+
+        <nav class="container__navigation">
+            <span class="navigation__brand">
+                <img src="media/brand.png" alt="brand">
+            </span>
+            <ul>
+                <li><a href="#main" id="Home">Inicio</a></li>
+                <li><a href="#about" id="AboutUs">Nosotros</a></li>
+                <li><a href="#products" id="Products">Productos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header -->
+
+        <header class="container__presentation" id="main">
             <div>
                 <div class="presentation__title">
                     <h1>JAVISTORE</h1>
@@ -36,15 +52,35 @@
             </div>
         </header>
 
-        <div class="video-container">
-            <video autoplay muted loop id="background-vid">
-                <source src="media/Cinematic_Shoe.mp4" type="video/mp4">
-            </video>
-        </div>
+        <!-- Background video -->
+        <video src="media/Abstract_White.mp4" autoplay muted loop id="background-vid"></video>
 
         <div class="container__products" id="products">
-            
+            <h1>Nuestros Productos</h1>
+            <div class="product__container">
+
+                <!--
+                    Here will be all the products
+                    Check javascript file
+                -->
+                <!--
+
+                Item template:
+
+                <div class="product__item">
+                    <div class="item__image">
+                        <img src="" alt="">
+                    </div>
+                    <h2>Title</h2>
+                    <p>99.99$</p>
+                </div>
+
+                -->
+
+            </div>
         </div>
     </div>    
 </body>
+
+<script src="js/index.js" type="module"></script>
 </html>
