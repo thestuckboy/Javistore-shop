@@ -7,37 +7,37 @@ that will be rendered after pages loads
 
 const productList = [
     {
-        productId: 1,
+        productType: 'Top',
         productImage: 'media/Item_1.jpg',
         productName: 'Sueter tricolor',
         productPrice: '99.99$'
     },
     {
-        productId: 2,
+        productType: 'Top',
         productImage: 'media/Item_2.jpg',
         productName: 'Sueter tricolor 2',
         productPrice: '99.99$'
     },
     {
-        productId: 3,
+        productType: 'Top',
         productImage: 'media/Item_3.jpg',
         productName: 'Camiseta "Heat Miami"',
         productPrice: '99.99$'
     },
     {
-        productId: 4,
+        productType: 'Top',
         productImage: 'media/Item_4.jpg',
         productName: 'Playera "Shallow"',
         productPrice: '99.99$'
     },
     {
-        productId: 5,
+        productType: 'Top',
         productImage: 'media/Item_5.jpg',
         productName: 'Playera Golden Black',
         productPrice: '99.99$'
     },
     {
-        productId: 6,
+        productType: 'Shoe',
         productImage: 'media/Item_6.jpg',
         productName: 'Zapatos Louis Vuitton',
         productPrice: '99.99$'
@@ -51,6 +51,44 @@ reference the productList array which contains
 all the products data
 
 */
+
+function createProductsFragmentBasedOn(array){
+    const fragment = document.createDocumentFragment();
+
+    for (let item of array) {
+
+        /*  product__item  */
+        const productItem = document.createElement('DIV');
+        productItem.classList.add('product__item');
+
+        /*  item__image  */
+        const itemImage = document.createElement('DIV');
+        itemImage.classList.add('item__image');
+
+        /* image inside item__image  */
+        const image = document.createElement('IMG');
+        image.setAttribute('src', `${item.productImage}`);
+
+        /*  item__title  */
+        const itemTitle = document.createElement('H2');
+        itemTitle.classList.add('item__title');
+        itemTitle.innerText = `${item.productName}`;
+
+
+        const itemPrice = document.createElement('P');
+        itemPrice.classList.add('item__price');
+        itemPrice.innerText = `${item.productPrice}`;
+
+
+        itemImage.appendChild(image);
+        productItem.appendChild(itemImage);
+        productItem.appendChild(itemTitle);
+        productItem.appendChild(itemPrice);
+        fragment.appendChild(productItem);
+    }
+
+    return fragment;
+}
 
 function addItems() {
 
@@ -184,4 +222,26 @@ function ObserveSections() {
     }
 }
 
-ObserveSections()
+ObserveSections();
+
+function reRenderProducts(type){
+    if (type == null){
+        const productContainer = document.querySelector('.product__container');
+        const items = createProductsFragmentBasedOn(productList);
+        productContainer.innerHTML = '';
+        productContainer.appendChild(items);
+        return;
+    }
+
+    const result = productList.filter(item => item.productType == type);
+
+    const productContainer = document.querySelector('.product__container');
+    productContainer.innerHTML = '';
+    const items = createProductsFragmentBasedOn(result);
+
+    productContainer.appendChild(items);
+
+    if (productContainer.innerHTML == ''){
+        productContainer.innerText = 'Ningún producto por ahora :(';
+    };
+}

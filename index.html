@@ -19,7 +19,7 @@
 
         <!-- Navigation bar -->
 
-        <nav class="container__navigation">
+        <nav class="container__navigation hidden">
             <span class="navigation__brand">
                 <img src="media/brand.png" alt="brand">
             </span>
@@ -56,7 +56,12 @@
         <video src="media/Abstract_White.mp4" autoplay muted loop id="background-vid"></video>
 
         <div class="container__products" id="products">
-            <h1>Nuestros Productos</h1>
+            <div class="products__selection">
+                <button onclick="reRenderProducts(null)">Todo</button>
+                <button onclick="reRenderProducts('Shoe')">Calzados</button>
+                <button onclick="reRenderProducts('Top')">Prendas superires<o/button>
+                <button onclick="reRenderProducts('Pant')">Prendas inferiores</button>
+            </div>
             <div class="product__container">
 
                 <!--
@@ -79,8 +84,10 @@
 
             </div>
         </div>
-    </div>    
+    </div>
+
+
+    <script src="js/index.js"></script>
 </body>
 
-<script src="js/index.js" type="module"></script>
 </html>
