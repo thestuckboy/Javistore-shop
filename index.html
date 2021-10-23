@@ -55,7 +55,50 @@
         <!-- Background video -->
         <video src="media/Abstract_White.mp4" autoplay muted loop id="background-vid"></video>
 
+
+        <!-- About Section -->
+        <div class="container__about" id="about">
+            <div class="about__description">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, natus totam porro blanditiis tenetur quibusdam veniam mollitia, praesentium iure possimus accusamus culpa amet autem excepturi sapiente! Cupiditate facilis deserunt non!</p>
+            </div>
+
+
+            <!-- ------------------------------ Slideshow ------------------------------ -->
+            <div class="about__slideshow">
+
+                <div class="slideshow__element">
+                    <img src="media/slideshow_element1.jpg" alt="Costa Mall Cabimas">
+                    <div class="element__description">
+                        <div class="description__detail">
+                            <p>Costa Mall</p>
+                            <span><a href="https://www.google.com/maps/place/Centro+Comercial+Costa+Mall/@10.3484249,-71.4173383,614m/data=!3m1!1e3!4m5!3m4!1s0x8e89c66f8540171f:0x77ddf560f7fe04e2!8m2!3d10.3480561!4d-71.4167443">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </a></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slideshow__element">
+                    <img src="media/slideshow_element2.jpg" alt="Costa Mall Cabimas">
+                    <div class="element__description">
+                        <div class="description__detail">
+                            <p>Centro Comercial AMAL</p>
+                            <span><a href="https://www.google.com/maps/place/Javistore+-+jeans+lounge/@10.3905152,-71.4724903,307m/data=!3m1!1e3!4m12!1m6!3m5!1s0x8e89c7cf18cf8791:0x389f1740a8c63bc5!2sLa+Fuente!8m2!3d10.3895862!4d-71.4692843!3m4!1s0x8e89c725c6b60071:0xd759ab6f6335dcac!8m2!3d10.3907852!4d-71.472533">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </a></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Products Section -->
+
         <div class="container__products" id="products">
+
+            <!--  Product navigation  -->
+
             <div class="products__selection">
                 <button onclick="reRenderProducts(null)">Todo</button>
                 <button onclick="reRenderProducts('Shoe')">Calzados</button>
@@ -84,6 +127,18 @@
 
             </div>
         </div>
+
+        <footer class="container__footer">
+            <ul>
+                <li>
+                    <a href="https://www.instagram.com/javistore/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </li>
+                <!-- <li>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                </li> -->
+            </ul>
+            <p>Javistore © 2021</p>
+        </footer>
     </div>
 
 

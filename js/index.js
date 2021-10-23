@@ -44,18 +44,30 @@ const productList = [
     }
 ]
 
-/* 
-
-This function adds the products taking as 
-reference the productList array which contains
-all the products data
-
-*/
+/* -------------------------------------------------------------------------- */
+/*                           Reusable Functions                           */
+/* -------------------------------------------------------------------------- */
 
 function createProductsFragmentBasedOn(array){
+
     const fragment = document.createDocumentFragment();
 
     for (let item of array) {
+        
+        /* 
+
+            For each element inside productList Array
+            we create the product following this template:
+
+            <div class="product__item">
+                <div class="item__image">
+                    <img src="media/name_of_image.jpg" alt="product alt">
+                </div>
+                <h2 class="item__title">Title</h2>
+                <p class="item__price">99.99$</p>
+            </div>
+
+        */
 
         /*  product__item  */
         const productItem = document.createElement('DIV');
@@ -75,63 +87,6 @@ function createProductsFragmentBasedOn(array){
         itemTitle.innerText = `${item.productName}`;
 
 
-        const itemPrice = document.createElement('P');
-        itemPrice.classList.add('item__price');
-        itemPrice.innerText = `${item.productPrice}`;
-
-
-        itemImage.appendChild(image);
-        productItem.appendChild(itemImage);
-        productItem.appendChild(itemTitle);
-        productItem.appendChild(itemPrice);
-        fragment.appendChild(productItem);
-    }
-
-    return fragment;
-}
-
-function addItems() {
-
-    /*First we grab the container where the products will be located:*/
-    const productContainer = document.querySelector('.product__container');
-
-    /*Then we create a fragment to optimize the code*/
-    const fragment = document.createDocumentFragment();
-
-    /* 
-
-    Then, for each element inside productList Array
-    we create the product following this template:
-
-    <div class="product__item">
-        <div class="item__image">
-            <img src="media/name_of_image.jpg" alt="product alt">
-        </div>
-        <h2 class="item__title">Title</h2>
-        <p class="item__price">99.99$</p>
-    </div>
-
-    */
-    for (let item of productList) {
-
-        /*  product__item  */
-        const productItem = document.createElement('DIV');
-        productItem.classList.add('product__item');
-
-        /*  item__image  */
-        const itemImage = document.createElement('DIV');
-        itemImage.classList.add('item__image');
-
-        /* image inside item__image  */
-        const image = document.createElement('IMG');
-        image.setAttribute('src', `${item.productImage}`);
-
-        /*  item__title  */
-        const itemTitle = document.createElement('H2');
-        itemTitle.classList.add('item__title');
-        itemTitle.innerText = `${item.productName}`;
-
-        /*  item__price  */
         const itemPrice = document.createElement('P');
         itemPrice.classList.add('item__price');
         itemPrice.innerText = `${item.productPrice}`;
@@ -147,11 +102,30 @@ function addItems() {
     /* 
 
     At this point fragment contains all the products,
-    so now we append it to the container
+    so now we return the fragment
 
     */
 
-    productContainer.appendChild(fragment);
+
+    return fragment;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Main Functions                               */
+/* -------------------------------------------------------------------------- */
+
+function addItems() {
+
+    /*First we grab the container where the products will be located:*/
+    const productContainer = document.querySelector('.product__container');
+
+    /* Then we create a HTML fragment which contains all products from the productList array */
+
+    let items = createProductsFragmentBasedOn(productList);
+
+    /* Now we append the fragment to the container */
+
+    productContainer.appendChild(items);
 }
 
 addItems();
@@ -205,7 +179,10 @@ function ObserveSections() {
     let products = document.querySelector('.container__products')
     products.navCompanionElement = document.getElementById('Products');
 
-    let sections = [container, products];
+    let about = document.querySelector('.container__about');
+    about.navCompanionElement = document.getElementById('AboutUs')
+
+    let sections = [container, products, about];
 
     const observer = new IntersectionObserver((entries) => {
         for (let entry of entries){
@@ -245,3 +222,22 @@ function reRenderProducts(type){
         productContainer.innerText = 'Ningún producto por ahora :(';
     };
 }
+
+let SlideOn = true;
+
+function slideShowFunctionality(){
+    let slideElement2 = document.querySelectorAll('.slideshow__element')[1];
+    setTimeout(()=>{
+        if (SlideOn){
+            slideElement2.style.animation = "pop-leave 1s forwards";
+            SlideOn = false;
+            slideShowFunctionality()
+        } else {
+            slideElement2.style.animation = "pop-come 1s forwards";
+            SlideOn = true;
+            slideShowFunctionality()
+        }
+    }, 5000)
+}
+
+slideShowFunctionality();
