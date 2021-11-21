@@ -92,7 +92,7 @@ body {
         @media screen and (max-width: 425px) {
             .container__navigation ul {
                 margin: 0;
-                justify-content:space-evenly;
+                justify-content:space-around;
                 width: 100%;
             }
         }
